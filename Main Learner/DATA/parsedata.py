@@ -1,11 +1,10 @@
 import csv
 
-csv_filer = csv.DictReader(open("extracted_train_ScotiaDSD.csv"))
+test = True
+
+csv_filer = csv.DictReader(open("extracted_" + ("test" if test else "train") + "_ScotiaDSD.csv"))
 
 i = 0
-
-filew_train = open("SCOTIABANKDSDTRAIN.txt", "w")
-filew_validate = open("SCOTIABANKDSDVALIDATE.txt", "w")
 
 to_write_train = ""
 to_write_validate = ""
@@ -78,17 +77,24 @@ for row in csv_filer:
     rest_values += adjusted_COUNT_30DAY_values
     
     if i%2 == 0:
-        to_write_train += ",".join([str(value) for value in rest_values]) + ":" + row["FRAUD_FLAG"] + "\n"
+        to_write_train += ",".join([str(value) for value in rest_values]) + ":" + ("" if len(row["FRAUD_FLAG"]) == 0 else ("1.0,0" if float(row["FRAUD_FLAG"]) == 0 else "0,1.0")) + "\n"
     else:
-        to_write_validate += ",".join([str(value) for value in rest_values]) + ":" + row["FRAUD_FLAG"] + "\n"
+        to_write_validate += ",".join([str(value) for value in rest_values]) + ":" + ("" if len(row["FRAUD_FLAG"]) == 0 else ("1.0,0" if float(row["FRAUD_FLAG"]) == 0 else "0,1.0")) + "\n"
     
     i += 1
     
-    if i == 10000:
-        break
+    #if i == 20000:
+        #break
 
-filew_train.write(to_write_train[:-1])
-filew_train.close()
+if not test:
+    filew_train = open("SCOTIABANKDSDTRAIN.txt", "w")
+    filew_train.write(to_write_train[:-1])
+    filew_train.close()
 
-filew_validate.write(to_write_validate[:-1])
-filew_validate.close()
+    filew_validate = open("SCOTIABANKDSDVALIDATE.txt", "w")
+    filew_validate.write(to_write_validate[:-1])
+    filew_validate.close()
+else:
+    filew_test = open("SCOTIABANKDSDTEST.txt", "w")
+    filew_test.write(to_write_train + to_write_validate[:-1])
+    filew_test.close()
