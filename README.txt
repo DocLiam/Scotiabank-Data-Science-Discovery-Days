@@ -1,1 +1,1 @@
-Copyright © 2023 Liam Roan Watson. All rights reserved.
+Copyright (c) 2023 by Liam Watson and Watcode. All rights reserved. For licensing, contact lrwatson@uwaterloo.ca or +1 437 688 3927
