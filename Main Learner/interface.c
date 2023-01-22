@@ -1,3 +1,5 @@
+//Copyright (c) 2023 by Liam Watson and Watcode. All rights reserved. For licensing, contact lrwatson@uwaterloo.ca or +1 437 688 3927
+
 #include "interface.h"
 #include <math.h>
 #include <stdio.h>
