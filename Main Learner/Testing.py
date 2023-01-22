@@ -12,7 +12,7 @@ Model = Model_Class()
 Model.load(model_name)
 
 Data = Data_Class()
-Data.extract(data_name + "VALIDATE")
+Data.extract(data_name + "TEST")
 
 Model.test(Data)
 
@@ -37,7 +37,7 @@ print("Total actual fraud cases: ", sum(required_values))
 
 print("Sample size: ", len(predicted_values))
 
-test = False
+test = True
 
 if test:
     csv_filer = csv.DictReader(open("./DATA/extracted_test_ScotiaDSD.csv"))
