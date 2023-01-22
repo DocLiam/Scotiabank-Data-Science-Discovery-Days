@@ -7,9 +7,9 @@ for line in open("desired_headers.txt", "r").read().split("\n"):
 
 print(desired_headers)
 
-csv_filer = csv.DictReader(open("test_ScotiaDSD.csv"))
+csv_filer = csv.DictReader(open("train_ScotiaDSD.csv"))
 
-with open("extracted_test_ScotiaDSD.csv", 'w', newline='') as csv_filew:
+with open("extracted_train_ScotiaDSD.csv", 'w', newline='') as csv_filew:
     writer = csv.writer(csv_filew, delimiter=',')
     
     writer.writerow(desired_headers)

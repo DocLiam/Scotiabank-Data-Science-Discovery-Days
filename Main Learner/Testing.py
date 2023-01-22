@@ -9,7 +9,7 @@ Model = Model_Class()
 Model.load(model_name)
 
 Data = Data_Class()
-Data.extract(data_name + "TEST")
+Data.extract(data_name + "TRAIN")
 
 Model.test(Data)
 
