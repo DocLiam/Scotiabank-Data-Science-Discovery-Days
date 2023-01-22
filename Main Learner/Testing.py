@@ -13,4 +13,6 @@ Data.extract(data_name + "TEST")
 
 Model.test(Data)
 
-print(Model.output_values)
+prediction_values = ["1" if Model.output_values[i] <= Model.output_values[i+1] else "0" for i in range(len(Model.output_values)//2)]
+
+print("\n".join(prediction_values[::-1]))
